@@ -2,12 +2,14 @@
 
 int main() {
     char operasi;
-    float angka1, angka2;
+    float angka1, angka2, angka3;
 
     printf("Masukkan angka pertama: ");
     scanf("%f", &angka1);
     printf("Masukkan angka kedua: ");
     scanf("%f", &angka2);
+    printf("Masukkan angka ketiga: ");
+    scanf("%f", &angka3);
   
 
     printf("Pilih operasi (+, -, *, /): ");
@@ -15,17 +17,17 @@ int main() {
 
     switch (operasi) {
         case '+':
-            printf("Hasil: %.2f\n", angka1 + angka2);
+            printf("Hasil: %.2f\n", angka1 + angka2 + angka3);
             break;
         case '-':
-            printf("Hasil: %.2f\n", angka1 - angka2);
+            printf("Hasil: %.2f\n", angka1 - angka2 - angka3);
             break;
         case '*':
-            printf("Hasil: %.2f\n", angka1 * angka2);
+            printf("Hasil: %.2f\n", angka1 * angka2 * angka3);
             break;
         case '/':
             if (angka2 != 0)
-                printf("Hasil: %.2f\n", angka1 / angka2);
+                printf("Hasil: %.2f\n", angka1 / angka2 / angka3);
             else
                 printf("Error: Pembagian dengan nol!\n");
             break;

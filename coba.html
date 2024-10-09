@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Input Data Diri</title>
+</head>
+<body>
+    <h1>Masukkan Data Diri</h1>
+    <form>
+        <label for="nama_universitas">Nama Universitas:</label>
+        <input type="text" id="nama_universitas" name="nama_universitas"><br><br>
+        <label for="tanggal_lahir">Tanggal Lahir:</label>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir"><br><br>
+        <button type="button" onclick="tampilkanData()">Tampilkan Data</button>
+    </form>
+    <p id="hasil"></p>
+
+    <script>
+        function tampilkanData() {
+            var namaUniversitas = document.getElementById("nama_universitas").value;
+            var tanggalLahir = document.getElementById("tanggal_lahir").value;
+            
+            document.getElementById("hasil").innerHTML = "Nama Universitas: " + namaUniversitas + "<br>" +
+                                                       "Tanggal Lahir: " + tanggalLahir;
+        }
+    </script>
+</body>
+</html>
