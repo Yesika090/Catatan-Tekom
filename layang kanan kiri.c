@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int tinggi = 5; // Sesuaikan tinggi layang-layang
+    int tinggi = 4; // Sesuaikan tinggi layang-layang
 
     // Bagian atas layang-layang
     for (int i = 1; i <= tinggi; i++) {
