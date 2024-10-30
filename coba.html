@@ -3,11 +3,17 @@
 <head>
     <title>Form Input Data Diri</title>
 </head>
-<body>
+<body><center>
     <h1>Masukkan Data Diri</h1>
-    <form>
+    <form> 
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama"><br><br>
         <label for="nama_universitas">Nama Universitas:</label>
         <input type="text" id="nama_universitas" name="nama_universitas"><br><br>
+        <label for="nama_fakultas">Nama Fakultas:</label>
+        <input type="text" id="nama_fakultas" name="nama_fakultas"><br><br>
+        <label for="nama_prodi">Nama Prodi:</label>
+        <input type="text" id="nama_prodi" name="nama_prodi"><br><br>
         <label for="tanggal_lahir">Tanggal Lahir:</label>
         <input type="date" id="tanggal_lahir" name="tanggal_lahir"><br><br>
         <button type="button" onclick="tampilkanData()">Tampilkan Data</button>
@@ -16,12 +22,15 @@
 
     <script>
         function tampilkanData() {
+            var nama = document.getElementById("nama").value
             var namaUniversitas = document.getElementById("nama_universitas").value;
+            var namaFakultas = document.getElementById("nama_fakultas").value;
+            var namaProdi = document.getElementById("nama_prodi").value;
             var tanggalLahir = document.getElementById("tanggal_lahir").value;
             
-            document.getElementById("hasil").innerHTML = "Nama Universitas: " + namaUniversitas + "<br>" +
-                                                       "Tanggal Lahir: " + tanggalLahir;
+            document.getElementById("hasil").innerHTML = "Nama: " + nama + "<br>" + "Nama Universitas: " + namaUniversitas + "<br>"  +  "Nama Fakultas: " + namaFakultas + "<br>" +
+                                                        "Nama Prodi: " + namaProdi + "<br>" + "Tanggal Lahir: " + tanggalLahir;
         }
     </script>
-</body>
+</body></center>
 </html>

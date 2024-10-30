@@ -1,40 +1,46 @@
+
 #include <stdio.h>
 
-int main() {
-    char operasi;
-    float angka1, angka2, angka3;
+int main() 
+{
+    char operator;
+    float bilangan1, bilangan2;
 
-    printf("Masukkan angka pertama: ");
-    scanf("%f", &angka1);
-    printf("Masukkan angka kedua: ");
-    scanf("%f", &angka2);
-    printf("Masukkan angka ketiga: ");
-    scanf("%f", &angka3);
-  
+    printf("================================\n");
+    printf("     KALKULATOR SEDERHANA       \n");
+    printf("================================\n");
 
-    printf("Pilih operasi (+, -, *, /): ");
-    scanf(" %c", &operasi);
+    printf("Pilih Operator (+, -, *, /): ");
+    scanf("%c", &operator);
 
-    switch (operasi) {
+    printf("Masukan Bilangan Pertama: ");
+    scanf("%f", &bilangan1);
+    printf("Masukan Bilangan Kedua: ");
+    scanf("%f", &bilangan2);
+
+
+
+    switch (operator) {
         case '+':
-            printf("Hasil: %.2f\n", angka1 + angka2 + angka3);
+            printf("Hasil: %.2f\n", (bilangan1 + bilangan2));
             break;
         case '-':
-            printf("Hasil: %.2f\n", angka1 - angka2 - angka3);
+            printf("Hasil: %.2f\n", (bilangan1 - bilangan2));
             break;
         case '*':
-            printf("Hasil: %.2f\n", angka1 * angka2 * angka3);
+            printf("Hasil: %.2f\n", (bilangan1 * bilangan2));
             break;
         case '/':
-            if (angka2 != 0)
-                printf("Hasil: %.2f\n", angka1 / angka2 / angka3);
-            else
-                printf("Error: Pembagian dengan nol!\n");
+            if (bilangan2 != 0){
+                printf("Hasil: %.2f\n", (bilangan1 / bilangan2));
+            } else {
+                printf("Error. Pembagian Dengan 0 Tidak Diperbolehkan!!!\n");
+            }
             break;
         default:
-            printf("Operasi tidak valid!\n");
-            break;
+            printf("Operator Salah.\n");
+            return 0;
     }
-
+    
     return 0;
 }
