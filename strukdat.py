@@ -172,3 +172,37 @@ pq.display()
 pq.reverse_queue()
 print("\nQueue after reversing:")
 pq.display()
+
+
+class PriorityQueue:
+    # Assuming the provided PriorityQueue class has the necessary methods
+
+def triage(nama, respirasi):
+    if respirasi == 0:
+        return 3, "Sudah meninggal"
+    elif respirasi < 10 or respirasi > 30:
+        return 2, "Merah"
+    else:
+        denyut = input("Denyut lemah/tidak terasa (y/n): ")
+        if denyut.lower() == 'y':
+            return 2, "Merah"
+        else:
+            perintah = input("Apakah bisa diperintah? (y/n): ")
+            if perintah.lower() == 'y':
+                return 1, "Kuning"
+            else:
+                return 2, "Merah"
+
+def main():
+    pq = PriorityQueue()
+    for i in range(3):
+        nama = input("Nama pasien: ")
+        respirasi = int(input("Kecepatan Respirasi per menit: "))
+        prioritas, status = triage(nama, respirasi)
+        pq.enqueue(prioritas, f"{nama}, status: {status}")
+
+    print("\n=== HASIL DATA PASIEN ===")
+    print_pasien(pq)
+
+if __name__ == "__main__":
+    main()
