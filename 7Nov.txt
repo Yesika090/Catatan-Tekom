@@ -1,0 +1,118 @@
+def hitung_tarif(asal, tujuan, kelas, jarak):
+  """Fungsi untuk menghitung tarif tiket kereta api.
+
+  Args:
+    asal: Stasiun keberangkatan.
+    tujuan: Stasiun tujuan.
+    kelas: Kelas kereta (ekonomi, bisnis, eksekutif).
+    jarak: Jarak tempuh (dalam kilometer).
+
+  Returns:
+    Tarif tiket kereta api.
+  """
+
+  # Tarif dasar per kilometer untuk setiap kelas
+  tarif_dasar = {
+    "ekonomi": 1000,
+    "bisnis": 1500,
+    "eksekutif": 2000
+  }
+
+  # Hitung tarif dasar total
+  tarif_total = tarif_dasar[kelas] * jarak
+
+  # Tambahkan logika diskon di sini (opsional)
+  # Contoh:
+  # if usia < 12:
+  #   tarif_total *= 0.5  # Diskon 50% untuk anak-anak
+
+  return tarif_total
+
+# Input data dari pengguna
+asal = input("Stasiun Asal: ")
+tujuan = input("Stasiun Tujuan: ")
+kelas = input("Kelas (ekonomi/bisnis/eksekutif): ")
+jarak = float(input("Jarak (km): "))
+
+# Hitung dan tampilkan tarif
+tarif = hitung_tarif(asal, tujuan, kelas, jarak)
+print("Tarif tiket:", tarif)
+
+
+
+def hitung_tarif_parkir(jenis_kendaraan, durasi):
+  """Fungsi untuk menghitung tarif parkir.
+
+  Args:
+    jenis_kendaraan: Jenis kendaraan (mobil, motor, dll.).
+    durasi: Durasi parkir (dalam jam).
+
+  Returns:
+    Tarif parkir.
+  """
+
+  # Tarif dasar per jam untuk setiap jenis kendaraan
+  tarif_dasar = {
+    "mobil": 5000,
+    "motor": 3000
+  }
+
+  # Hitung tarif dasar total
+  tarif_total = tarif_dasar[jenis_kendaraan] * durasi
+
+  # Tambahkan logika diskon di sini (opsional)
+  # Contoh:
+  # if jam_masuk >= 18:
+  #   tarif_total *= 0.8  # Diskon 20% setelah jam 6 sore
+
+  return tarif_total
+
+# Input data dari pengguna
+jenis_kendaraan = input("Jenis Kendaraan (mobil/motor): ")
+durasi = float(input("Durasi Parkir (jam): "))
+
+# Hitung dan tampilkan tarif
+tarif = hitung_tarif_parkir(jenis_kendaraan, durasi)
+print("Tarif parkir:", tarif)
+
+
+
+def hitung_tarif_tol(golongan, jarak, waktu_masuk=None, waktu_keluar=None):
+  """Fungsi untuk menghitung tarif tol.
+
+  Args:
+    golongan: Golongan kendaraan (1, 2, 3, dll.).
+    jarak: Jarak tempuh (dalam kilometer).
+    waktu_masuk: Waktu masuk (opsional).
+    waktu_keluar: Waktu keluar (opsional).
+
+  Returns:
+    Tarif tol.
+  """
+
+  # Tarif dasar per kilometer untuk setiap golongan kendaraan
+  tarif_dasar = {
+    1: 1000,
+    2: 1500,
+    3: 2000
+  }
+
+  # Hitung tarif dasar total
+  tarif_total = tarif_dasar[golongan] * jarak
+
+  # Tambahkan logika tarif tambahan di sini (opsional)
+  # Contoh:
+  # if waktu_masuk >= 18 or waktu_masuk <= 6:
+  #   tarif_total *= 1.2  # Tambah 20% untuk malam hari
+
+  return tarif_total
+
+# Input data dari pengguna
+golongan = int(input("Golongan Kendaraan: "))
+jarak = float(input("Jarak Tempuh (km): "))
+# waktu_masuk = input("Waktu Masuk (HH:MM): ")  # Jika ingin menggunakan waktu
+# waktu_keluar = input("Waktu Keluar (HH:MM): ")
+
+# Hitung dan tampilkan tarif
+tarif = hitung_tarif_tol(golongan, jarak)
+print("Tarif tol:", tarif)
