@@ -116,3 +116,39 @@ jarak = float(input("Jarak Tempuh (km): "))
 # Hitung dan tampilkan tarif
 tarif = hitung_tarif_tol(golongan, jarak)
 print("Tarif tol:", tarif)
+
+
+
+def hitung_harga_tiket(harga_dasar, jumlah_tiket, kode_diskon=None):
+  """Fungsi untuk menghitung harga tiket konser
+
+  Args:
+    harga_dasar: Harga dasar satu tiket (int)
+    jumlah_tiket: Jumlah tiket yang dibeli (int)
+    kode_diskon: Kode diskon (str, opsional)
+
+  Returns:
+    Total harga tiket (int)
+  """
+
+  total_harga = harga_dasar * jumlah_tiket
+  diskon = 0
+
+  if kode_diskon:
+    # Contoh perhitungan diskon berdasarkan kode
+    if kode_diskon == 'DISKON10':
+      diskon = total_harga * 0.1
+    elif kode_diskon == 'DISKON20':
+      diskon = total_harga * 0.2
+
+  total_harga -= diskon
+  return total_harga
+
+# Input data dari pengguna
+harga_dasar = int(input("Masukkan harga dasar tiket: "))
+jumlah_tiket = int(input("Masukkan jumlah tiket yang dibeli: "))
+kode_diskon = input("Masukkan kode diskon (jika ada): ")
+
+# Hitung dan tampilkan total harga
+total_harga = hitung_harga_tiket(harga_dasar, jumlah_tiket, kode_diskon)
+print("Total harga tiket: Rp", total_harga)
