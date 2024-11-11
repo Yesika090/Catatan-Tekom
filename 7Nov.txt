@@ -9,49 +9,53 @@ class PriorityQueueSorted:
         return len(self.queue)
 
     def remove(self):
-        if not self.is_empty():
-            return self.queue.pop(0)
-        else:
-            print("Queue is empty")
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.queue.pop(0)
 
     def peek(self):
-        if not self.is_empty():
-            return self.queue[0]
-        else:
-            print("Queue is empty")
+        if self.is_empty():
+            raise IndexError("Queue is empty")
+        return self.queue[0]
 
     def add(self, data, priority):
-        new_item = (priority, data)  # Simpan prioritas sebagai tuple
-        self.queue.append(new_item)
-        self.queue.sort(reverse=True)  # Urutkan berdasarkan prioritas (descending)
+        # Insert at the end and then sort using quicksort
+        self.queue.append((priority, data))
+        self.queue.sort(reverse=True)
 
     def print_all(self):
         for priority, data in self.queue:
-            print(f"{data} ({priority})")
+            print(f"Priority: {priority}, Data: {data}")
 
 # Test case
 myQueue = PriorityQueueSorted()
+
 myQueue.add('Gian', 2)
 myQueue.add('Kezia', 4)
 myQueue.print_all()
 print(myQueue.peek())
+
 print()
 
 myQueue.add('Glen', 8)
 myQueue.add('Christo', 1)
 myQueue.print_all()
 print(myQueue.peek())
+
 print()
 
 print("========REMOVE========")
 myQueue.remove()
 myQueue.print_all()
 print()
+
 myQueue.remove()
 myQueue.print_all()
 print()
+
 myQueue.remove()
 myQueue.print_all()
 print()
+
 myQueue.add('Saya', 7)
 myQueue.print_all()
