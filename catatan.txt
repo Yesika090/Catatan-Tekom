@@ -1,0 +1,51 @@
+import sqlite3
+
+# Membuat koneksi ke database
+conn = sqlite3.connect('mydatabase.db')
+cursor = conn.cursor()
+
+# Membuat tabel (jika belum ada)
+cursor.execute('''CREATE TABLE IF NOT EXISTS customers (
+                id INTEGER PRIMARY KEY,
+                name TEXT,
+                email TEXT
+            )''')
+
+# Fungsi untuk memasukkan data
+def insert_data(name, email):
+    cursor.execute("INSERT INTO customers (name, email) VALUES (?, ?)", (name, email))
+    conn.commit()
+
+# Fungsi untuk menampilkan semua data
+def view_data():
+    cursor.execute("SELECT * FROM customers")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+
+# Fungsi untuk memperbarui data
+def update_data(id, name, email):
+    cursor.execute("UPDATE customers SET name=?, email=? WHERE id=?", (name, email, id))
+    conn.commit()
+
+# Fungsi untuk menghapus data
+def delete_data(id):
+    cursor.execute("DELETE FROM customers WHERE id=?", (id,))
+    conn.commit()
+
+# Contoh penggunaan
+insert_data("John Doe", "johndoe@example.com")
+insert_data("Jane Smith", "janesmith@example.com")
+
+view_data()
+
+update_data(1, "Johnny Doe", "johnnydoe@example.com")
+
+view_data()
+
+delete_data(2)
+
+view_data()
+
+# Menutup koneksi
+conn.close()
