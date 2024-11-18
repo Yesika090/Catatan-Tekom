@@ -176,14 +176,13 @@ print(f"mahasiswa dengan NIM 71210683 adalah {ht.get_data(71210683)}")
 
 
 
-
 class HashTable:
     def __init__(self, size=10):
         self.size = size
         self.map = [None] * self.size
 
     def _get_hash(self, key):
-        # A simple hash function
+        # A simple hash function, modulo the size
         return key % self.size
 
     def _linear_probing(self, key, index):
@@ -199,9 +198,9 @@ class HashTable:
     def get_data(self, key):
         index = self._get_hash(key)
         index = self._linear_probing(key, index)
-        if self.map[index] is None:
-            return None
-        return self.map[index][1]
+        if self.map[index] is not None and self.map[index][0] == key:
+            return self.map[index][1]
+        return None
 
     def resize(self, new_size):
         new_map = [None] * new_size
