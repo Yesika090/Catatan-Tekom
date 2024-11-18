@@ -173,3 +173,7 @@ ht.resize(3)
 print("==== HASH TABLE SETELAH DIRESIZE ====")
 ht.print_all()
 print(f"mahasiswa dengan NIM 71210683 adalah {ht.get_data(71210683)}")
+
+
+
+
