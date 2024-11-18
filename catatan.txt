@@ -177,3 +177,45 @@ print(f"mahasiswa dengan NIM 71210683 adalah {ht.get_data(71210683)}")
 
 
 
+class HashTable:
+    def __init__(self, size=10):
+        self.size = size
+        self.map = [None] * self.size
+
+    def _get_hash(self, key):
+        # A simple hash function
+        return key % self.size
+
+    def _linear_probing(self, key, index):
+        while self.map[index] is not None and self.map[index][0] != key:
+            index = (index + 1) % self.size
+        return index
+
+    def add(self, key, value):
+        index = self._get_hash(key)
+        index = self._linear_probing(key, index)
+        self.map[index] = (key, value)
+
+    def get_data(self, key):
+        index = self._get_hash(key)
+        index = self._linear_probing(key, index)
+        if self.map[index] is None:
+            return None
+        return self.map[index][1]
+
+    def resize(self, new_size):
+        new_map = [None] * new_size
+        for key, value in self.map:
+            index = key % new_size
+            index = self._linear_probing(key, index, new_map)
+            new_map[index] = (key, value)
+        self.map = new_map
+        self.size = new_size
+
+    def print_all(self):
+        print("==== ISI HASH TABLE ====")
+        for item in self.map:
+            if item is not None:
+                print(f"NIM: {item[0]} NAMA: {item[1]}")
+
+# ... (rest of the code as provided in the prompt)
