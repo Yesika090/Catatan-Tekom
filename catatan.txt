@@ -107,3 +107,69 @@ view_data()
 
 # Menutup koneksi
 conn.close()
+
+
+
+
+class HashTable:
+    def __init__(self, size=10):
+        self.size = size
+        self.table = [None] * self.size
+
+    def _get_hash(self, key):
+        # A simple hash function, you can use more complex ones if needed
+        return key % self.size
+
+    def _linear_probing(self, key, index):
+        while True:
+            if self.table[index] is None:
+                return index
+            index = (index + 1) % self.size
+
+    def add(self, key, value):
+        index = self._get_hash(key)
+        index = self._linear_probing(key, index)
+        self.table[index] = (key, value)
+
+    def get_data(self, key):
+        index = self._get_hash(key)
+        while self.table[index] is not None:
+            k, v = self.table[index]
+            if k == key:
+                return v
+            index = (index + 1) % self.size
+        return None
+
+    def resize(self, new_size):
+        new_table = [None] * new_size
+        for item in self.table:
+            if item is not None:
+                key, value = item
+                index = self._get_hash(key, new_table)
+                index = self._linear_probing(key, index, new_table)
+                new_table[index] = (key, value)
+        self.table = new_table
+        self.size = new_size
+
+    def print_all(self):
+        print("==== ISI HASH TABLE ====")
+        for item in self.table:
+            if item is not None:
+                key, value = item
+                print(f"NIM: {key} NAMA: {value}")
+
+# Test case
+ht = HashTable()
+ht.add(71210689, "Gian")
+ht.add(71210683, "Yandi")
+ht.add(71210699, "Andreas")
+
+print("==== HASH TABLE SEBELUM DIRESIZE ====")
+ht.print_all()
+print(f"mahasiswa dengan NIM 71210683 adalah {ht.get_data(71210683)}")
+
+ht.resize(3)
+
+print("==== HASH TABLE SETELAH DIRESIZE ====")
+ht.print_all()
+print(f"mahasiswa dengan NIM 71210683 adalah {ht.get_data(71210683)}")
