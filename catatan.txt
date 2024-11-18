@@ -218,3 +218,61 @@ class HashTable:
                 print(f"NIM: {item[0]} NAMA: {item[1]}")
 
 # ... (rest of the code as provided in the prompt)
+
+
+
+
+--------
+class HashTable:
+    def __init__(self):
+        self.size = 10
+        self.map = [None] * self.size
+
+    def _get_hash(self, key):
+        return key % self.size
+
+    def _linear_probing(self, key, index):
+        return (self._get_hash(key) + index) % self.size
+
+    def _probing(self, key):
+        for index in range(self.size):
+            probe_index = self._linear_probing(key, index)
+            if self.map[probe_index] is None or self.map[probe_index] == "DELETED":
+                return probe_index
+            if self.map[probe_index][0] == key:
+                return probe_index
+        return None
+
+    def add(self, key, value):
+        index = self._probing(key)
+        if index is not None:
+            if self.map[index] is None or self.map[index] == "DELETED":
+                self.map[index] = (key, value)
+            else:
+                self.map[index] = (key, value)  # Replace value for the same key
+        else:
+            raise Exception("Hash table penuh. Silakan resize.")
+
+    def get_data(self, key):
+        for index in range(self.size):
+            probe_index = self._linear_probing(key, index)
+            if self.map[probe_index] is None:
+                return None
+            if self.map[probe_index][0] == key:
+                return self.map[probe_index][1]
+        return None
+
+    def resize(self, size):
+        old_map = self.map
+        self.size = size
+        self.map = [None] * self.size
+
+        for item in old_map:
+            if item and item != "DELETED":
+                self.add(item[0], item[1])
+
+    def print_all(self):
+        print("==== ISI HASH TABLE ====")
+        for item in self.map:
+            if item and item != "DELETED":
+                print(f"NIM: {item[0]} NAMA: {item[1]}")
