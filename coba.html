@@ -8,6 +8,8 @@
     <form> 
         <label for="nama">Nama:</label>
         <input type="text" id="nama" name="nama"><br><br>
+        <label for="alamat">Alamat:</label>
+        <input type="text" id="alamat" name="alamat"><br><br>
         <label for="nama_universitas">Nama Universitas:</label>
         <input type="text" id="nama_universitas" name="nama_universitas"><br><br>
         <label for="nama_fakultas">Nama Fakultas:</label>
@@ -23,12 +25,13 @@
     <script>
         function tampilkanData() {
             var nama = document.getElementById("nama").value
+            var alamat = document.getElementById("alamat").value;
             var namaUniversitas = document.getElementById("nama_universitas").value;
             var namaFakultas = document.getElementById("nama_fakultas").value;
             var namaProdi = document.getElementById("nama_prodi").value;
             var tanggalLahir = document.getElementById("tanggal_lahir").value;
             
-            document.getElementById("hasil").innerHTML = "Nama: " + nama + "<br>" + "Nama Universitas: " + namaUniversitas + "<br>"  +  "Nama Fakultas: " + namaFakultas + "<br>" +
+            document.getElementById("hasil").innerHTML = "Nama: " + nama + "<br>" + "Alamat: " + alamat + "<br>" + "Nama Universitas: " + namaUniversitas + "<br>"  +  "Nama Fakultas: " + namaFakultas + "<br>" +
                                                         "Nama Prodi: " + namaProdi + "<br>" + "Tanggal Lahir: " + tanggalLahir;
         }
     </script>
