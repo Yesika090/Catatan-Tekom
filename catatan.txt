@@ -71,3 +71,24 @@ if __name__ == '__main__':
     print()
     print(binaryT.hasilGanjil())
     print(binaryT.hasilGenap())
+
+
+
+
+stack = [self.root]
+        result = 0
+
+        while stack:
+            current = stack.pop()
+            if current:
+                # Tambahkan jika genap, kurangkan jika ganjil
+                if current.data % 2 == 0:
+                    result += current.data
+                else:
+                    result -= current.data
+                
+                # Masukkan anak kiri dan kanan ke stack
+                if current.right:
+                    stack.append(current.right)
+                if current.left:
+                    stack.append(current.left)
