@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tombol Ganti Warna</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    img {
+      width: 200px;
+      height: auto;
+      margin-top: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff0000;
+      color: rgb(255, 255, 255);
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>PDI Perjuangan</h1>
+    <h2>Ini jawa tengah bukan ibu kota</h2>
+    <h2>tanpa endore artis no 3 tetap eksis</h2> 
+    <h2>tanpa presiden no 3 tatap keren</h2>
+    <button onclick="gantiWarna()">Ganti Warna</button>
+    <div>
+      <img id="andika" src="Andika.png" alt="Andika">
+      <img id="banteng" src="Banteng.png" alt="Banteng"> 
+      <img id="megawati" src="Megawati.png" alt="Megawati">
+    </div>
+  </div>
+
+  <script>
+    function gantiWarna() {
+      // Array warna yang akan dipilih secara acak
+      const warna = ["#FF5733", "#33FF57", "#3357FF", "#FFD700", "#800080", "#00FFFF"];
+      // Pilih warna secara acak
+      const warnaAcak = warna[Math.floor(Math.random() * warna.length)];
+      // Ubah warna latar belakang
+      document.body.style.backgroundColor = warnaAcak;
+    }
+  </script>
+</body>
+</html>
